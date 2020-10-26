@@ -30,7 +30,9 @@ if [ ! "$SKIP_CLUSTER_CREATION" = "true" ]; then
     echo "Creating k3d cluster..."
 
     k3d cluster create ${CLUSTER_NAME}
-    k3d kubeconfig merge ${CLUSTER_NAME} --switch-context
+    k3d kubeconfig get ${CLUSTER_NAME} > "${K3D_ROOT}/k3d.yaml"
+
+    echo "KUBECONFIG=${K3D_ROOT}/k3d.yaml" >> $GITHUB_ENV
 
     echo "Finished to create k3d cluster."
 fi

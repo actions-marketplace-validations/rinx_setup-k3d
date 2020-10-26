@@ -36,6 +36,7 @@ jobs:
             kubectl cluster-info
             kubectl get pods -n kube-system
             echo "current-context:" $(kubectl config current-context)
+```
 
 ## References
 
