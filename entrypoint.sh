@@ -9,8 +9,7 @@ REPO_URL="https://github.com/rancher/k3d"
 K3D_ROOT="/usr/local/k3d"
 
 if [ "$K3D_VERSION" = "latest" ]; then
-  local latest_release_url="${REPO_URL}/releases/latest"
-  K3D_VERSION=$(curl -Ls -o /dev/null -w %{url_effective} $latest_release_url | grep -oE "[^/]+$" )
+  K3D_VERSION=$(curl -Ls -o /dev/null -w %{url_effective} "${REPO_URL}/releases/latest" | grep -oE "[^/]+$" )
 fi
 
 echo "Install k3d ${K3D_VERSION}."
