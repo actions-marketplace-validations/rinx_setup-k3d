@@ -6,7 +6,7 @@ CLUSTER_NAME=$2
 SKIP_CLUSTER_CREATION=$3
 
 REPO_URL="https://github.com/rancher/k3d"
-K3D_ROOT="/usr/local/k3d"
+K3D_ROOT="/home/runner/work/_temp/_github_home/k3d"
 
 if [ "$K3D_VERSION" = "latest" ]; then
   K3D_VERSION=$(curl -Ls -o /dev/null -w %{url_effective} "${REPO_URL}/releases/latest" | grep -oE "[^/]+$" )
