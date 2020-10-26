@@ -1,0 +1,14 @@
+name: k3d test
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: setup-k3d
+        uses: rinx/setup-k3d@master
+      - name: Get cluster info
+        run: |
+            kubectl cluster-info
+            kubectl get pods -n kube-system
+            echo "current-context:" $(kubectl config current-context)

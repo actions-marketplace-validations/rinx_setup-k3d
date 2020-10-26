@@ -1,0 +1,26 @@
+name: 'Setup k3d'
+description: 'GitHub Action for setting up k3d'
+author: 'rinx <rintaro.okamura@gmail.com>'
+branding:
+  icon: 'box'
+  color: 'blue'
+inputs:
+  version:
+    description: 'k3d version'
+    required: false
+    default: 'latest'
+  name:
+    description: 'cluster name'
+    required: false
+    default: 'k3d-cluster'
+  skipClusterCreation:
+    description: 'if "true", the action will not create a cluster, just acquire the tools'
+    required: false
+    default: 'false'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.version }}
+    - ${{ inputs.name }}
+    - ${{ inputs.skipClusterCreation }}
