@@ -17,6 +17,14 @@ inputs:
     description: 'if "true", the action will not create a cluster, just acquire the tools'
     required: false
     default: 'false'
+  agents:
+    description: 'number of agents'
+    required: false
+    default: '0'
+  options:
+    description: 'options for k3d cluster create command'
+    required: false
+    default: ''
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -24,3 +32,5 @@ runs:
     - ${{ inputs.version }}
     - ${{ inputs.name }}
     - ${{ inputs.skipClusterCreation }}
+    - ${{ inputs.agents }}
+    - ${{ inputs.options }}

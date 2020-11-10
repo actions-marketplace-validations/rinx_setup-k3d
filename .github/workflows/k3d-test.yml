@@ -2,13 +2,38 @@ name: k3d test
 on: push
 
 jobs:
-  test:
+  setup-k3d:
     runs-on: ubuntu-latest
     steps:
       - name: setup-k3d
         uses: rinx/setup-k3d@master
       - name: Get cluster info
         run: |
-            kubectl cluster-info
-            kubectl get pods -n kube-system
-            echo "current-context:" $(kubectl config current-context)
+          kubectl cluster-info
+          kubectl get pods -n kube-system
+          kubectl get nodes
+          echo "current-context:" $(kubectl config current-context)
+  setup-k3d-multi-agent:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: rinx/setup-k3d@master
+        with:
+          agents: 3
+      - name: Get cluster info
+        run: |
+          kubectl cluster-info
+          kubectl get pods -n kube-system
+          kubectl get nodes
+          echo "current-context:" $(kubectl config current-context)
+  setup-k3d-ingress:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: rinx/setup-k3d@master
+        with:
+          options: '-p "8081:80@loadbalancer"'
+      - name: Get cluster info
+        run: |
+          kubectl cluster-info
+          kubectl get pods -n kube-system
+          kubectl get nodes
+          echo "current-context:" $(kubectl config current-context)
