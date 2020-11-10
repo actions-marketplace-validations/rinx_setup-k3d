@@ -17,6 +17,10 @@ inputs:
     description: 'if "true", the action will not create a cluster, just acquire the tools'
     required: false
     default: 'false'
+  ingressPort:
+    description: 'if it is not "0", ingress will be exposed to the specified port'
+    required: false
+    default: '0'
   agents:
     description: 'number of agents'
     required: false
@@ -32,5 +36,6 @@ runs:
     - ${{ inputs.version }}
     - ${{ inputs.name }}
     - ${{ inputs.skipClusterCreation }}
+    - ${{ inputs.ingressPort }}
     - ${{ inputs.agents }}
     - ${{ inputs.options }}

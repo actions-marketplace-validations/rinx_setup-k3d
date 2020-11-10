@@ -30,7 +30,7 @@ jobs:
     steps:
       - uses: rinx/setup-k3d@master
         with:
-          options: -p "8081:80@loadbalancer"
+          ingressPort: 8081
       - name: Get cluster info
         run: |
           kubectl cluster-info

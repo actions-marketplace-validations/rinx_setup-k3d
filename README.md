@@ -22,6 +22,12 @@ If "true", the action will not create a cluster, just acquire the tools.
 
 Default: false
 
+### `ingressPort`
+
+If it is not `0`, ingress will be exposed to the specified port.
+
+Default: 0
+
 ### `agents`
 
 If it is not `0`, specified number of agents will be created.
@@ -82,7 +88,7 @@ jobs:
     steps:
       - uses: rinx/setup-k3d@v0.0.2
         with:
-          options: -p "8081:80@loadbalancer"
+          ingressPort: 8081
       - name: Get cluster info
         run: |
           kubectl cluster-info

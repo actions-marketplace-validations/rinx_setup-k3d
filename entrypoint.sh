@@ -4,8 +4,9 @@ set -e
 K3D_VERSION=$1
 CLUSTER_NAME=$2
 SKIP_CLUSTER_CREATION=$3
-AGENTS=$4
-OPTIONS=$5
+INGRESS_PORT=$4
+AGENTS=$5
+OPTIONS=$6
 
 REPO_URL="https://github.com/rancher/k3d"
 K3D_ROOT="/github/home/k3d"
@@ -31,6 +32,10 @@ echo "Finished to install k3d."
 
 if [ ! "$SKIP_CLUSTER_CREATION" = "true" ]; then
     echo "Creating k3d cluster..."
+
+    if [ "${INGRESS_PORT}" != "0" ]; then
+      OPTIONS="${OPTIONS} -p \"${INGRESS_PORT}:80@loadbalancer\""
+    fi
 
     if [ "${AGENTS}" != "0" ]; then
       OPTIONS="${OPTIONS} --agents ${AGENTS}"
