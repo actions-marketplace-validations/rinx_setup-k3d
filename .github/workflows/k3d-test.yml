@@ -30,7 +30,7 @@ jobs:
     steps:
       - uses: rinx/setup-k3d@master
         with:
-          options: '-p "8081:80@loadbalancer"'
+          options: -p "8081:80@loadbalancer"
       - name: Get cluster info
         run: |
           kubectl cluster-info

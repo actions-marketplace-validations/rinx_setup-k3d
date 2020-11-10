@@ -82,7 +82,7 @@ jobs:
     steps:
       - uses: rinx/setup-k3d@v0.0.2
         with:
-          options: '-p "8081:80@loadbalancer"'
+          options: -p "8081:80@loadbalancer"
       - name: Get cluster info
         run: |
           kubectl cluster-info
