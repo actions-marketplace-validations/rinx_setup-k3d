@@ -34,7 +34,7 @@ if [ ! "$SKIP_CLUSTER_CREATION" = "true" ]; then
     echo "Creating k3d cluster..."
 
     if [ "${INGRESS_PORT}" != "0" ]; then
-      OPTIONS="${OPTIONS} -p \"${INGRESS_PORT}:80@loadbalancer\""
+      OPTIONS="${OPTIONS} -p ${INGRESS_PORT}:80@loadbalancer"
     fi
 
     if [ "${AGENTS}" != "0" ]; then
