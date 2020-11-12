@@ -14,7 +14,7 @@ Default: latest
 
 cluster name.
 
-Default: k3d-cluster
+Default: mycluster
 
 ### `skipClusterCreation`
 

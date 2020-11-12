@@ -12,7 +12,7 @@ inputs:
   name:
     description: 'cluster name'
     required: false
-    default: 'k3d-cluster'
+    default: 'mycluster'
   skipClusterCreation:
     description: 'if "true", the action will not create a cluster, just acquire the tools'
     required: false
