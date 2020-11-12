@@ -1,5 +1,5 @@
 name: 'Setup k3d'
-description: 'GitHub Action for setting up k3d'
+description: "GitHub Action for setting up k3d (k3s in Docker). It's lighter than KinD (Kubernetes in Docker)."
 author: 'rinx <rintaro.okamura@gmail.com>'
 branding:
   icon: 'box'
